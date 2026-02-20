@@ -1,0 +1,706 @@
+openapi: 3.0.3
+info:
+  title: Inventory Management API
+  description: API for managing inventory across branches and warehouses
+  version: 1.0.0
+  contact:
+    name: National Clothing Store
+    email: api@nationalclothingstore.com
+
+paths:
+  /api/v1/inventory:
+    get:
+      summary: Get inventory with filtering
+      tags:
+        - Inventory
+      parameters:
+        - name: branchId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: warehouseId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: productId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: lowStock
+          in: query
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Paginated list of inventory items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedInventoryResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/inventory/{id}:
+    get:
+      summary: Get inventory item by ID
+      tags:
+        - Inventory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Inventory item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    put:
+      summary: Update inventory quantity
+      tags:
+        - Inventory
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInventoryRequest'
+      responses:
+        '200':
+          description: Inventory updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/inventory/adjust:
+    post:
+      summary: Adjust inventory quantity
+      tags:
+        - Inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdjustInventoryRequest'
+      responses:
+        '200':
+          description: Inventory adjusted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryTransaction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/inventory/transfer:
+    post:
+      summary: Transfer inventory between locations
+      tags:
+        - Inventory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferInventoryRequest'
+      responses:
+        '200':
+          description: Inventory transfer initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryTransfer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/inventory/low-stock-alerts:
+    get:
+      summary: Get low stock alerts
+      tags:
+        - Inventory
+      parameters:
+        - name: branchId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: warehouseId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum: [critical, warning, info]
+            default: warning
+      responses:
+        '200':
+          description: List of low stock alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LowStockAlert'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/v1/inventory/transactions:
+    get:
+      summary: Get inventory transaction history
+      tags:
+        - Inventory
+      parameters:
+        - name: productId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: branchId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: warehouseId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: transactionType
+          in: query
+          schema:
+            type: string
+            enum: [StockIn, StockOut, Transfer, Adjustment, Sale, Return]
+        - name: fromDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: toDate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: Paginated list of inventory transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTransactionResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    Inventory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        quantity:
+          type: integer
+          minimum: 0
+        reservedQuantity:
+          type: integer
+          minimum: 0
+        availableQuantity:
+          type: integer
+          minimum: 0
+        unitCost:
+          type: number
+          format: decimal
+          minimum: 0
+        lastUpdated:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        productId:
+          type: string
+          format: uuid
+        product:
+          $ref: '#/components/schemas/ProductSummary'
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        productVariation:
+          $ref: '#/components/schemas/ProductVariationSummary'
+        branchId:
+          type: string
+          format: uuid
+          nullable: true
+        branch:
+          $ref: '#/components/schemas/BranchSummary'
+        warehouseId:
+          type: string
+          format: uuid
+          nullable: true
+        warehouse:
+          $ref: '#/components/schemas/WarehouseSummary'
+
+    UpdateInventoryRequest:
+      type: object
+      required:
+        - quantity
+      properties:
+        quantity:
+          type: integer
+          minimum: 0
+        unitCost:
+          type: number
+          format: decimal
+          minimum: 0
+        reason:
+          type: string
+          maxLength: 500
+
+    AdjustInventoryRequest:
+      type: object
+      required:
+        - productId
+        - quantity
+        - transactionType
+        - reason
+      properties:
+        productId:
+          type: string
+          format: uuid
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        branchId:
+          type: string
+          format: uuid
+          nullable: true
+        warehouseId:
+          type: string
+          format: uuid
+          nullable: true
+        quantity:
+          type: integer
+        transactionType:
+          type: string
+          enum: [StockIn, StockOut, Adjustment]
+        reason:
+          type: string
+          maxLength: 500
+        unitCost:
+          type: number
+          format: decimal
+          minimum: 0
+
+    TransferInventoryRequest:
+      type: object
+      required:
+        - productId
+        - quantity
+        - fromLocationId
+        - toLocationId
+      properties:
+        productId:
+          type: string
+          format: uuid
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        quantity:
+          type: integer
+          minimum: 1
+        fromLocationId:
+          type: string
+          format: uuid
+        toLocationId:
+          type: string
+          format: uuid
+        fromLocationType:
+          type: string
+          enum: [Branch, Warehouse]
+        toLocationType:
+          type: string
+          enum: [Branch, Warehouse]
+        reason:
+          type: string
+          maxLength: 500
+
+    InventoryTransfer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        quantity:
+          type: integer
+          minimum: 1
+        fromLocationId:
+          type: string
+          format: uuid
+        toLocationId:
+          type: string
+          format: uuid
+        fromLocationType:
+          type: string
+          enum: [Branch, Warehouse]
+        toLocationType:
+          type: string
+          enum: [Branch, Warehouse]
+        status:
+          type: string
+          enum: [Pending, InTransit, Completed, Cancelled]
+        reason:
+          type: string
+          maxLength: 500
+        createdAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+          nullable: true
+
+    InventoryTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [StockIn, StockOut, Transfer, Adjustment, Sale, Return]
+        quantity:
+          type: integer
+        unitCost:
+          type: number
+          format: decimal
+          minimum: 0
+        reason:
+          type: string
+          maxLength: 500
+        createdAt:
+          type: string
+          format: date-time
+        productId:
+          type: string
+          format: uuid
+        product:
+          $ref: '#/components/schemas/ProductSummary'
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        productVariation:
+          $ref: '#/components/schemas/ProductVariationSummary'
+        branchId:
+          type: string
+          format: uuid
+          nullable: true
+        branch:
+          $ref: '#/components/schemas/BranchSummary'
+        warehouseId:
+          type: string
+          format: uuid
+          nullable: true
+        warehouse:
+          $ref: '#/components/schemas/WarehouseSummary'
+        createdBy:
+          type: string
+          format: uuid
+        createdByUser:
+          $ref: '#/components/schemas/UserSummary'
+
+    LowStockAlert:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        product:
+          $ref: '#/components/schemas/ProductSummary'
+        productVariationId:
+          type: string
+          format: uuid
+          nullable: true
+        productVariation:
+          $ref: '#/components/schemas/ProductVariationSummary'
+        branchId:
+          type: string
+          format: uuid
+          nullable: true
+        branch:
+          $ref: '#/components/schemas/BranchSummary'
+        warehouseId:
+          type: string
+          format: uuid
+          nullable: true
+        warehouse:
+          $ref: '#/components/schemas/WarehouseSummary'
+        currentQuantity:
+          type: integer
+          minimum: 0
+        threshold:
+          type: integer
+          minimum: 0
+        severity:
+          type: string
+          enum: [critical, warning, info]
+        createdAt:
+          type: string
+          format: date-time
+        acknowledgedAt:
+          type: string
+          format: date-time
+          nullable: true
+
+    ProductSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        sku:
+          type: string
+        barcode:
+          type: string
+
+    ProductVariationSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        size:
+          type: string
+        color:
+          type: string
+        sku:
+          type: string
+        barcode:
+          type: string
+
+    BranchSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        code:
+          type: string
+
+    WarehouseSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        code:
+          type: string
+
+    UserSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+
+    PagedInventoryResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Inventory'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    PagedTransactionResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InventoryTransaction'
+        pagination:
+          $ref: '#/components/schemas/PaginationInfo'
+
+    PaginationInfo:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          minimum: 1
+        pageSize:
+          type: integer
+          minimum: 1
+        totalItems:
+          type: integer
+          minimum: 0
+        totalPages:
+          type: integer
+          minimum: 0
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: array
+                items:
+                  type: string
+
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Unauthorized
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Resource not found
+
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Internal server error
+
+security:
+  - BearerAuth: []
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

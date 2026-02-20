@@ -1,0 +1,16 @@
+**/.dockerignore
+**/.git
+**/.gitignore
+**/README.md
+**/Dockerfile*
+**/docker-compose*
+**/.vscode/
+**/bin/
+**/obj/
+**/out/
+**/publish/
+**/tests/
+**/*.md
+**/*.txt
+**/.env*
+**/.secrets

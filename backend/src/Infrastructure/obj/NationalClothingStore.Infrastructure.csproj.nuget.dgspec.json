@@ -1,0 +1,322 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
+        "projectName": "NationalClothingStore.Application",
+        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/CDP1xnHCl8Ojdqvr8CltE29ePuzH3D3Ke5L9Fe4VJlbplYpCjc/api": {},
+          "https://nuget.devexpress.com/s7wT5oLFV3fOtfj46aCPE33ugPLlfzfl172bkfoar5PhcxXLfD/api": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
+              },
+              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
+                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.9, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.15.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "projectName": "NationalClothingStore.Domain",
+        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/CDP1xnHCl8Ojdqvr8CltE29ePuzH3D3Ke5L9Fe4VJlbplYpCjc/api": {},
+          "https://nuget.devexpress.com/s7wT5oLFV3fOtfj46aCPE33ugPLlfzfl172bkfoar5PhcxXLfD/api": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+        "projectName": "NationalClothingStore.Infrastructure",
+        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/CDP1xnHCl8Ojdqvr8CltE29ePuzH3D3Ke5L9Fe4VJlbplYpCjc/api": {},
+          "https://nuget.devexpress.com/s7wT5oLFV3fOtfj46aCPE33ugPLlfzfl172bkfoar5PhcxXLfD/api": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
+                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj"
+              },
+              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.15.1, )"
+            },
+            "Quartz.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.15.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.7.27, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
+        "projectName": "NationalClothingStore.Shared",
+        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/CDP1xnHCl8Ojdqvr8CltE29ePuzH3D3Ke5L9Fe4VJlbplYpCjc/api": {},
+          "https://nuget.devexpress.com/s7wT5oLFV3fOtfj46aCPE33ugPLlfzfl172bkfoar5PhcxXLfD/api": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

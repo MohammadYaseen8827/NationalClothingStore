@@ -1,0 +1,11 @@
+D:\Wissam\NationalClothingStore\backend\src\Shared\bin\Debug\net9.0\NationalClothingStore.Shared.deps.json
+D:\Wissam\NationalClothingStore\backend\src\Shared\bin\Debug\net9.0\NationalClothingStore.Shared.dll
+D:\Wissam\NationalClothingStore\backend\src\Shared\bin\Debug\net9.0\NationalClothingStore.Shared.pdb
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.AssemblyInfoInputs.cache
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.AssemblyInfo.cs
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.csproj.CoreCompileInputs.cache
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.dll
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\refint\NationalClothingStore.Shared.dll
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\NationalClothingStore.Shared.pdb
+D:\Wissam\NationalClothingStore\backend\src\Shared\obj\Debug\net9.0\ref\NationalClothingStore.Shared.dll
