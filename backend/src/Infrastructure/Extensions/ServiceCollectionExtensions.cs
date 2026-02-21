@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NationalClothingStore.Application.Interfaces;
 using NationalClothingStore.Application.Services;
+using NationalClothingStore.Infrastructure.Data;
 using NationalClothingStore.Infrastructure.Data.Repositories;
 using NationalClothingStore.Infrastructure.External;
 using NationalClothingStore.Infrastructure.Monitoring;
@@ -20,6 +21,9 @@ public static class ServiceCollectionExtensions
     {
         // Register generic repository
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        
+        // Register UnitOfWork
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         
         // Register specific repositories
         services.AddScoped<IBranchRepository, BranchRepository>();
