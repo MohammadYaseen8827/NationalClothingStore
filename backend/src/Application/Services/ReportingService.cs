@@ -52,7 +52,7 @@ public class ReportingService : IReportingService
             
             // Group by day for trend analysis
             var dailySales = salesTransactions
-                .GroupBy(t => t.TransactionDate.Date)
+                .GroupBy(t => t.CreatedAt.Date)
                 .Select(g => new DailySalesData
                 {
                     Date = g.Key,
@@ -70,10 +70,10 @@ public class ReportingService : IReportingService
                 .Select(g => new ProductSalesData
                 {
                     ProductId = g.Key,
-                    ProductName = g.First().ProductName,
+                    ProductName = g.First().Product?.Name ?? "Unknown",
                     TotalQuantity = g.Sum(i => i.Quantity),
                     TotalRevenue = g.Sum(i => i.TotalPrice),
-                    AveragePrice = g.Sum(i => i.TotalPrice) / g.Sum(i => i.Quantity)
+                    AveragePrice = g.Sum(i => i.Quantity) > 0 ? g.Sum(i => i.TotalPrice) / g.Sum(i => i.Quantity) : 0
                 })
                 .OrderByDescending(p => p.TotalRevenue)
                 .Take(10)
@@ -88,7 +88,7 @@ public class ReportingService : IReportingService
                     PaymentMethod = g.Key,
                     TotalAmount = g.Sum(p => p.Amount),
                     TransactionCount = g.Count(),
-                    Percentage = totalSales > 0 ? (g.Sum(p => p.Amount) / totalSales) * 100 : 0
+                    Percentage = totalSales > 0 ? (double)((g.Sum(p => p.Amount) / totalSales) * 100) : 0
                 })
                 .OrderByDescending(p => p.TotalAmount)
                 .ToList();
@@ -123,7 +123,14 @@ public class ReportingService : IReportingService
             _logger.LogInformation("Generating inventory report for branch {BranchId} and warehouse {WarehouseId}", branchId, warehouseId);
 
             // Get inventory summary
-            var inventorySummary = await _inventoryManagementService.GetInventorySummaryAsync(branchId, warehouseId, cancellationToken);
+            var inventorySummaryObj = await _inventoryManagementService.GetInventorySummaryAsync(branchId, warehouseId, cancellationToken);
+            dynamic inventorySummary = inventorySummaryObj;
+            
+            int totalItems = (int)(inventorySummary?.TotalItems ?? 0);
+            decimal totalValue = (decimal)(inventorySummary?.TotalValue ?? 0m);
+            int lowStockItems = (int)(inventorySummary?.LowStockCount ?? 0);
+            int outOfStockItems = (int)(inventorySummary?.OutOfStockCount ?? 0);
+            decimal averageUnitCost = totalItems > 0 ? totalValue / totalItems : 0;
 
             // Get low stock alerts
             var lowStockAlerts = await _inventoryManagementService.GetLowStockAlertsAsync(branchId, warehouseId, cancellationToken);
@@ -133,33 +140,39 @@ public class ReportingService : IReportingService
                 DateTime.UtcNow.AddDays(-7), DateTime.UtcNow, branchId, warehouseId, cancellationToken);
 
             // Calculate inventory value
-            var totalInventoryValue = inventorySummary.TotalItems * inventorySummary.AverageUnitCost;
+            var totalInventoryValue = totalItems * averageUnitCost;
 
             // Stock levels by category
-            var stockLevelsByCategory = inventorySummary.InventoryByCategory
-                .Select(c => new CategoryStockData
-                {
-                    Category = c.Category,
-                    TotalItems = c.TotalItems,
-                    TotalValue = c.TotalItems * c.AverageUnitCost,
-                    LowStockItems = c.LowStockItems,
-                    OutOfStockItems = c.OutOfStockItems
-                })
-                .OrderByDescending(c => c.TotalValue)
-                .ToList();
+            var stockLevelsByCategory = new List<CategoryStockData>();
+            if (recentMovements != null)
+            {
+                var movements = recentMovements.ToList();
+                stockLevelsByCategory = movements
+                    .GroupBy(m => m.ProductName)
+                    .Select(g => new CategoryStockData
+                    {
+                        Category = g.Key,
+                        TotalItems = g.Sum(m => m.Quantity),
+                        TotalValue = g.Sum(m => m.Quantity * m.UnitCost),
+                        LowStockItems = 0,
+                        OutOfStockItems = 0
+                    })
+                    .OrderByDescending(c => c.TotalValue)
+                    .ToList();
+            }
 
             return new InventoryReport
             {
                 BranchId = branchId,
                 WarehouseId = warehouseId,
-                TotalItems = inventorySummary.TotalItems,
+                TotalItems = totalItems,
                 TotalValue = totalInventoryValue,
-                AverageUnitCost = inventorySummary.AverageUnitCost,
-                LowStockItems = inventorySummary.LowStockItems,
-                OutOfStockItems = inventorySummary.OutOfStockItems,
+                AverageUnitCost = averageUnitCost,
+                LowStockItems = lowStockItems,
+                OutOfStockItems = outOfStockItems,
                 StockLevelsByCategory = stockLevelsByCategory,
                 LowStockAlerts = lowStockAlerts.ToList(),
-                RecentMovements = recentMovements,
+                RecentMovements = recentMovements?.ToList() ?? new(),
                 GeneratedAt = DateTime.UtcNow
             };
         }

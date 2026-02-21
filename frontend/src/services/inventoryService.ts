@@ -251,7 +251,7 @@ export const inventoryService = {
    */
   async updateStock(id: string, quantity: number): Promise<void> {
     try {
-      await apiClient.patch(`/inventory/${id}/stock`, { quantity })
+      await apiClient.put(`/inventory/${id}/stock`, { quantity })
     } catch (error: unknown) {
       handleAxiosError(error, 'Failed to update stock')
     }
@@ -274,7 +274,7 @@ export const inventoryService = {
    */
   async adjustInventory(id: string, adjustment: AdjustInventoryRequest): Promise<Inventory> {
     try {
-      const response = await apiClient.post<Inventory>(`/inventory/${id}/adjust`, adjustment)
+      const response = await apiClient.put<Inventory>(`/inventory/${id}/adjust`, adjustment)
       return response.data
     } catch (error: unknown) {
       handleAxiosError(error, 'Failed to adjust inventory')
@@ -292,7 +292,7 @@ export const inventoryService = {
     endDate?: string
   }): Promise<InventoryTransaction[]> {
     try {
-      const response = await apiClient.get<InventoryTransaction[]>('/inventory/transactions', { params })
+      const response = await apiClient.get<InventoryTransaction[]>('/inventory/transaction/recent', { params })
       return response.data
     } catch (error: unknown) {
       handleAxiosError(error, 'Failed to retrieve transactions')
@@ -348,10 +348,139 @@ export const inventoryService = {
     warehouseId?: string
   }): Promise<LowStockAlert[]> {
     try {
-      const response = await apiClient.get<LowStockAlert[]>('/inventory/alerts', { params })
+      const response = await apiClient.get<LowStockAlert[]>('/inventory/alerts/low-stock', { params })
       return response.data
     } catch (error: unknown) {
       handleAxiosError(error, 'Failed to retrieve low stock alerts')
+    }
+  },
+
+  /**
+   * Reserve inventory
+   */
+  async reserveInventory(id: string, quantity: number): Promise<void> {
+    try {
+      await apiClient.post(`/inventory/${id}/reserve`, { quantity })
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to reserve inventory')
+    }
+  },
+
+  /**
+   * Release inventory reservation
+   */
+  async releaseInventory(id: string, quantity: number): Promise<void> {
+    try {
+      await apiClient.post(`/inventory/${id}/release`, { quantity })
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to release inventory')
+    }
+  },
+
+  /**
+   * Bulk transfer inventory
+   */
+  async bulkTransferInventory(transfers: TransferInventoryRequest[]): Promise<any> {
+    try {
+      const response = await apiClient.post('/inventory/bulk-transfer', transfers)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to bulk transfer inventory')
+    }
+  },
+
+  /**
+   * Bulk adjust inventory
+   */
+  async bulkAdjustInventory(adjustments: AdjustInventoryRequest[]): Promise<Inventory[]> {
+    try {
+      const response = await apiClient.put<Inventory[]>('/inventory/bulk-adjust', adjustments)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to bulk adjust inventory')
+    }
+  },
+
+  /**
+   * Search inventory
+   */
+  async searchInventory(query: any): Promise<any> {
+    try {
+      const response = await apiClient.post('/inventory/search', query)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to search inventory')
+    }
+  },
+
+  /**
+   * Get inventory value by location
+   */
+  async getInventoryValueByLocation(): Promise<any[]> {
+    try {
+      const response = await apiClient.get<any[]>('/inventory/value-by-location')
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to get inventory value by location')
+    }
+  },
+
+  /**
+   * Generate inventory report
+   */
+  async generateInventoryReport(): Promise<any> {
+    try {
+      const response = await apiClient.get('/inventory/report')
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to generate inventory report')
+    }
+  },
+
+  /**
+   * Create inventory transaction
+   */
+  async createTransaction(data: any): Promise<InventoryTransaction> {
+    try {
+      const response = await apiClient.post<InventoryTransaction>('/inventory/transaction', data)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to create transaction')
+    }
+  },
+
+  /**
+   * Get transaction by ID
+   */
+  async getTransactionById(id: string): Promise<InventoryTransaction> {
+    try {
+      const response = await apiClient.get<InventoryTransaction>(`/inventory/transaction/${id}`)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to get transaction')
+    }
+  },
+
+  /**
+   * Search transactions
+   */
+  async searchTransactions(query: any): Promise<any> {
+    try {
+      const response = await apiClient.post('/inventory/transaction/search', query)
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to search transactions')
+    }
+  },
+
+  /**
+   * Send low stock alerts
+   */
+  async sendLowStockAlerts(): Promise<void> {
+    try {
+      await apiClient.post('/inventory/alerts/low-stock/send')
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to send low stock alerts')
     }
   }
 }

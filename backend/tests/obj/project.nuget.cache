@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4pNG0iZbDaM=",
-  "success": false,
-  "projectFilePath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
+  "dgSpecHash": "3fd6AoDgr3o=",
+  "success": true,
+  "projectFilePath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\NationalClothingStore.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\devlooped.sponsorlink\\1.0.0\\devlooped.sponsorlink.1.0.0.nupkg.sha512",
@@ -129,23 +129,12 @@
   ],
   "logs": [
     {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj'. Check that the project reference is valid and that the project file exists.",
-      "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
-      "filePath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
-      "libraryId": "D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    },
-    {
       "code": "NU1901",
       "level": "Warning",
       "message": "Package 'Moq' 4.20.0 has a known low severity vulnerability, https://github.com/advisories/GHSA-6r78-m64m-qwcf",
-      "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
+      "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\NationalClothingStore.Tests.csproj",
       "warningLevel": 1,
-      "filePath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
+      "filePath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\NationalClothingStore.Tests.csproj",
       "libraryId": "Moq",
       "targetGraphs": [
         "net9.0"

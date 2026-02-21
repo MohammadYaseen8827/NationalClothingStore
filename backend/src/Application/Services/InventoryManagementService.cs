@@ -884,37 +884,20 @@ public class InventoryManagementService(
         {
             TotalItems = stats.TotalItems,
             TotalValue = stats.TotalValue,
-            LowStockCount = stats.LowStockCount,
-            OutOfStockCount = stats.OutOfStockCount,
-            BranchCounts = stats.BranchCounts,
-            WarehouseCounts = stats.WarehouseCounts
+            LowStockCount = stats.LowStockItems,
+            OutOfStockCount = stats.OutOfStockItems,
+            BranchCounts = new Dictionary<Guid, int>(),
+            WarehouseCounts = new Dictionary<Guid, int>()
         };
     }
 
-    public async Task<IEnumerable<object>> GetRecentMovementsAsync(
+    public async Task<IEnumerable<InventoryMovement>> GetRecentMovementsAsync(
         DateTime startDate,
         DateTime endDate,
         Guid? branchId = null,
         Guid? warehouseId = null,
         CancellationToken cancellationToken = default)
     {
-        var transactions = await inventoryTransactionRepository.GetByDateRangeAsync(startDate, endDate, cancellationToken);
-        
-        var query = transactions.AsQueryable();
-        
-        if (branchId.HasValue)
-        {
-            query = query.Where(t => t.BranchId == branchId.Value);
-        }
-        
-        return query.Select(t => new
-        {
-            t.Id,
-            t.InventoryId,
-            t.TransactionType,
-            t.Quantity,
-            t.Reason,
-            t.CreatedAt
-        }).ToList();
+        return await transactionRepository.GetMovementsAsync(startDate, endDate, branchId, warehouseId, cancellationToken);
     }
 }

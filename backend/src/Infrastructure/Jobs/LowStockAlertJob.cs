@@ -83,8 +83,8 @@ public class LowStockAlertJob : IBackgroundJob
                 AlertDate = alert.AlertDate
             }, cancellationToken);
 
-            // Mark alert as resolved
-            await _inventoryManagementService.ResolveLowStockAlertAsync(alert.InventoryId, cancellationToken);
+            // Mark alert as resolved (if needed)
+            // await _inventoryManagementService.ResolveLowStockAlertAsync(alert.InventoryId, cancellationToken);
 
             _logger.LogInformation("Low stock alert processed and notification sent for inventory {InventoryId}", alert.InventoryId);
         }

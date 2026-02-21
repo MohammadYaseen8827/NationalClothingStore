@@ -190,7 +190,7 @@ public interface IInventoryManagementService
 
     // Summary and reporting
     Task<object> GetInventorySummaryAsync(Guid? branchId = null, Guid? warehouseId = null, CancellationToken cancellationToken = default);
-    Task<IEnumerable<object>> GetRecentMovementsAsync(DateTime startDate, DateTime endDate, Guid? branchId = null, Guid? warehouseId = null, CancellationToken cancellationToken = default);
+    Task<IEnumerable<InventoryMovement>> GetRecentMovementsAsync(DateTime startDate, DateTime endDate, Guid? branchId = null, Guid? warehouseId = null, CancellationToken cancellationToken = default);
 }
 
 /// <summary>

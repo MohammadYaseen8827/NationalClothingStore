@@ -7154,7 +7154,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj",
       "Microsoft.AspNetCore.Mvc.Testing >= 9.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Moq >= 4.20.0",
@@ -7168,11 +7167,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
+      "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\NationalClothingStore.Tests.csproj",
       "projectName": "NationalClothingStore.Tests",
-      "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\NationalClothingStore.Tests.csproj",
+      "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\NationalClothingStore.Tests.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\tests\\obj\\",
+      "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -7188,11 +7187,7 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {
-            "D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj": {
-              "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -7253,15 +7248,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "D:\\Wissam\\NationalClothingStore\\backend\\API\\NationalClothingStore.API.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    },
     {
       "code": "NU1901",
       "level": "Warning",

@@ -133,11 +133,3 @@ public class ProductVariationsController : ControllerBase
         }
     }
 }
-
-/// <summary>
-/// Request model for updating stock
-/// </summary>
-public class UpdateStockRequest
-{
-    public int Quantity { get; set; }
-}

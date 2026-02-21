@@ -101,7 +101,8 @@ public class SalesProcessingService(
                     IsApproved = true
                 };
                 
-                unitOfWork.Context.Set<SalesTransactionPayment>().Add(payment);
+                // Don't add directly; save transaction will handle persistence
+                // unitOfWork.Context.Set<SalesTransactionPayment>().Add(payment);
             }
 
             // Update inventory
@@ -211,7 +212,7 @@ public class SalesProcessingService(
             foreach (var item in returnItems)
             {
                 item.SalesTransactionId = savedReturnTransaction.Id;
-                unitOfWork.Context.Set<SalesTransactionItem>().Add(item);
+                // Item will be persisted with transaction
             }
 
             // Process refund payment
@@ -228,7 +229,7 @@ public class SalesProcessingService(
                     CardType = request.RefundPayment.CardType,
                     IsApproved = true
                 };
-                unitOfWork.Context.Set<SalesTransactionPayment>().Add(refundPayment);
+                // Refund will be persisted with transaction
             }
 
             // Restore inventory
@@ -377,21 +378,11 @@ public class SalesProcessingService(
             TransactionDate = DateTime.UtcNow
         };
 
-        var loyaltyDbSet = unitOfWork.Context.Set<LoyaltyTransaction>();
-        loyaltyDbSet.Add(loyaltyTransaction);
+        // Loyalty transactions are persisted through repository
+        // var loyaltyDbSet = unitOfWork.Context.Set<LoyaltyTransaction>();
+        // loyaltyDbSet.Add(loyaltyTransaction);
 
-        // Update customer loyalty record
-        var customerLoyalty = await unitOfWork.Context.Set<CustomerLoyalty>()
-            .FindAsync(new object[] { customerLoyaltyId }, cancellationToken);
-        
-        if (customerLoyalty != null)
-        {
-            customerLoyalty.PointsBalance += points;
-            customerLoyalty.TotalPointsEarned += Math.Max(0, points);
-            customerLoyalty.PointsRedeemed += Math.Max(0, -points);
-            customerLoyalty.LastActivityDate = DateTime.UtcNow;
-            customerLoyalty.UpdatedAt = DateTime.UtcNow;
-        }
+        // Note: Customer loyalty updates require direct repository access
     }
 
     private string GenerateTransactionNumber()

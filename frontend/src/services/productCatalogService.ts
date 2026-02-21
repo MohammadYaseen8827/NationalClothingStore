@@ -226,7 +226,7 @@ export const productApi = {
 export const productVariationApi = {
   // Get variation by ID
   async getVariation(id: string): Promise<ProductVariation> {
-    const response = await apiClient.get<ApiResponse<ProductVariation>>(`/variations/${id}`)
+    const response = await apiClient.get<ApiResponse<ProductVariation>>(`/ProductVariations/${id}`)
     return response.data.data
   },
 
@@ -238,23 +238,23 @@ export const productVariationApi = {
 
   // Update product variation
   async updateVariation(id: string, variation: UpdateProductVariationRequest): Promise<ProductVariation> {
-    const response = await apiClient.put<ApiResponse<ProductVariation>>(`/variations/${id}`, variation)
+    const response = await apiClient.put<ApiResponse<ProductVariation>>(`/ProductVariations/${id}`, variation)
     return response.data.data
   },
 
   // Delete product variation
   async deleteVariation(id: string): Promise<void> {
-    await apiClient.delete(`/variations/${id}`)
+    await apiClient.delete(`/ProductVariations/${id}`)
   },
 
   // Update variation stock
   async updateStock(id: string, quantity: number): Promise<void> {
-    await apiClient.patch(`/variations/${id}/stock`, { quantity })
+    await apiClient.patch(`/ProductVariations/${id}/stock`, { quantity })
   },
 
   // Get variation by SKU
   async getVariationBySku(sku: string): Promise<ProductVariation> {
-    const response = await apiClient.get<ApiResponse<ProductVariation>>(`/variations/by-sku/${sku}`)
+    const response = await apiClient.get<ApiResponse<ProductVariation>>(`/ProductVariations/by-sku/${sku}`)
     return response.data.data
   }
 }
@@ -291,7 +291,7 @@ export const fileUploadApi = {
 
   // Delete file
   async deleteFile(filePath: string): Promise<void> {
-    await apiClient.delete('/files/delete', { data: { filePath } } as any)
+    await apiClient.delete('/files', { data: { filePath } } as any)
   },
 
   // Get file info

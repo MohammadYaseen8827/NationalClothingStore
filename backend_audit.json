@@ -1,0 +1,1486 @@
+{
+  "controllers": [
+    {
+      "name": "BaseController",
+      "base_route": "api/v{version:apiVersion}/Base",
+      "services": [],
+      "endpoints": []
+    },
+    {
+      "name": "CategoriesController",
+      "base_route": "api/Categories",
+      "services": [
+        "IProductCatalogService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetCategories",
+          "http_method": "HttpGet",
+          "route": "/api/Categories",
+          "request_dto": "Query:bool",
+          "response_dto": "IEnumerable<Category"
+        },
+        {
+          "method": "GetCategory",
+          "http_method": "HttpGet",
+          "route": "/api/Categories/{id}",
+          "request_dto": "None",
+          "response_dto": "Category"
+        },
+        {
+          "method": "GetRootCategories",
+          "http_method": "HttpGet",
+          "route": "/api/Categories/root",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Category"
+        },
+        {
+          "method": "GetChildCategories",
+          "http_method": "HttpGet",
+          "route": "/api/Categories/{parentId}/children",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Category"
+        },
+        {
+          "method": "CreateCategory",
+          "http_method": "HttpPost",
+          "route": "/api/Categories",
+          "request_dto": "CreateCategoryRequest",
+          "response_dto": "Category"
+        },
+        {
+          "method": "UpdateCategory",
+          "http_method": "HttpPut",
+          "route": "/api/Categories/{id}",
+          "request_dto": "UpdateCategoryRequest",
+          "response_dto": "Category"
+        },
+        {
+          "method": "DeleteCategory",
+          "http_method": "HttpDelete",
+          "route": "/api/Categories/{id}",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "ValidateCategoryDeletion",
+          "http_method": "HttpGet",
+          "route": "/api/Categories/{id}/validate-deletion",
+          "request_dto": "None",
+          "response_dto": "bool"
+        }
+      ]
+    },
+    {
+      "name": "CustomersController",
+      "base_route": "api/Customers",
+      "services": [
+        "ICustomerManagementService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetCustomer",
+          "http_method": "HttpGet",
+          "route": "/api/Customers/{id}",
+          "request_dto": "None",
+          "response_dto": "Customer"
+        },
+        {
+          "method": "GetCustomers",
+          "http_method": "HttpGet",
+          "route": "/api/Customers",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<Customer"
+        },
+        {
+          "method": "SearchCustomer",
+          "http_method": "HttpGet",
+          "route": "/api/Customers/search",
+          "request_dto": "Query:string",
+          "response_dto": "Customer"
+        },
+        {
+          "method": "CreateCustomer",
+          "http_method": "HttpPost",
+          "route": "/api/Customers",
+          "request_dto": "CreateCustomerRequest",
+          "response_dto": "Customer"
+        },
+        {
+          "method": "UpdateCustomer",
+          "http_method": "HttpPut",
+          "route": "/api/Customers/{id}",
+          "request_dto": "UpdateCustomerRequest",
+          "response_dto": "Customer"
+        },
+        {
+          "method": "DeleteCustomer",
+          "http_method": "HttpDelete",
+          "route": "/api/Customers/{id}",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetCustomerLoyalty",
+          "http_method": "HttpGet",
+          "route": "/api/Customers/{id}/loyalty",
+          "request_dto": "None",
+          "response_dto": "CustomerLoyalty"
+        },
+        {
+          "method": "AddLoyaltyPoints",
+          "http_method": "HttpPost",
+          "route": "/api/Customers/{id}/loyalty/add-points",
+          "request_dto": "AddLoyaltyPointsRequest",
+          "response_dto": "CustomerLoyalty"
+        },
+        {
+          "method": "RedeemLoyaltyPoints",
+          "http_method": "HttpPost",
+          "route": "/api/Customers/{id}/loyalty/redeem-points",
+          "request_dto": "RedeemLoyaltyPointsRequest",
+          "response_dto": "CustomerLoyalty"
+        }
+      ]
+    },
+    {
+      "name": "FilesController",
+      "base_route": "api/Files",
+      "services": [
+        "IFileUploadService"
+      ],
+      "endpoints": [
+        {
+          "method": "UploadFile",
+          "http_method": "HttpPost",
+          "route": "/api/Files/upload",
+          "request_dto": "None",
+          "response_dto": "FileUploadResult"
+        },
+        {
+          "method": "UploadFiles",
+          "http_method": "HttpPost",
+          "route": "/api/Files/upload-multiple",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<FileUploadResult"
+        },
+        {
+          "method": "DeleteFile",
+          "http_method": "HttpDelete",
+          "route": "/api/Files",
+          "request_dto": "DeleteFileRequest",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetFileInfo",
+          "http_method": "HttpGet",
+          "route": "/api/Files/info",
+          "request_dto": "Query:string",
+          "response_dto": "None"
+        },
+        {
+          "method": "FileExists",
+          "http_method": "HttpGet",
+          "route": "/api/Files/exists",
+          "request_dto": "Query:string",
+          "response_dto": "bool"
+        }
+      ]
+    },
+    {
+      "name": "HealthCheckController",
+      "base_route": "api/HealthCheck",
+      "services": [],
+      "endpoints": []
+    },
+    {
+      "name": "HealthController",
+      "base_route": "api/v{version:apiVersion}/Health",
+      "services": [],
+      "endpoints": [
+        {
+          "method": "Get",
+          "http_method": "HttpGet",
+          "route": "/api/v{version:apiVersion}/Health",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "GetReadiness",
+          "http_method": "HttpGet",
+          "route": "/api/v{version:apiVersion}/Health/readiness",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "GetDetailedHealth",
+          "http_method": "HttpGet",
+          "route": "/api/v{version:apiVersion}/Health/detailed",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        }
+      ]
+    },
+    {
+      "name": "InventoryController",
+      "base_route": "api/Inventory",
+      "services": [
+        "IInventoryManagementService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetInventory",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/{id}",
+          "request_dto": "None",
+          "response_dto": "Inventory"
+        },
+        {
+          "method": "GetInventoryByProduct",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/by-product/{productId}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetInventoryByProductVariation",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/by-variation/{productVariationId}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetInventoryByBranch",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/by-branch/{branchId}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetInventoryByWarehouse",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/by-warehouse/{warehouseId}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetInventoryByLocation",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/by-location",
+          "request_dto": "Query:Guid",
+          "response_dto": "Inventory?"
+        },
+        {
+          "method": "CreateInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory",
+          "request_dto": "None",
+          "response_dto": "Inventory"
+        },
+        {
+          "method": "UpdateInventory",
+          "http_method": "HttpPut",
+          "route": "/api/Inventory/{id}",
+          "request_dto": "None",
+          "response_dto": "Inventory"
+        },
+        {
+          "method": "DeleteInventory",
+          "http_method": "HttpDelete",
+          "route": "/api/Inventory/{id}",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "ReserveInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/{id}/reserve",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "ReleaseInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/{id}/release",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "UpdateStock",
+          "http_method": "HttpPut",
+          "route": "/api/Inventory/{id}/stock",
+          "request_dto": "UpdateStockRequest",
+          "response_dto": "Inventory"
+        },
+        {
+          "method": "TransferInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/transfer",
+          "request_dto": "None",
+          "response_dto": "InventoryTransferResult"
+        },
+        {
+          "method": "BulkTransferInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/bulk-transfer",
+          "request_dto": "List<TransferInventoryRequest>",
+          "response_dto": "InventoryTransferResult"
+        },
+        {
+          "method": "AdjustInventory",
+          "http_method": "HttpPut",
+          "route": "/api/Inventory/{id}/adjust",
+          "request_dto": "None",
+          "response_dto": "Inventory"
+        },
+        {
+          "method": "BulkAdjustInventory",
+          "http_method": "HttpPut",
+          "route": "/api/Inventory/bulk-adjust",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "SearchInventory",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/search",
+          "request_dto": "None",
+          "response_dto": "PagedResult<Inventory"
+        },
+        {
+          "method": "GetLowStockItems",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/low-stock",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetOutOfStockItems",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/out-of-stock",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<Inventory"
+        },
+        {
+          "method": "GetInventoryStatistics",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/statistics",
+          "request_dto": "None",
+          "response_dto": "InventoryStatistics"
+        },
+        {
+          "method": "GetInventoryValueByLocation",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/value-by-location",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<LocationInventoryValue"
+        },
+        {
+          "method": "GenerateInventoryReport",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/report",
+          "request_dto": "None",
+          "response_dto": "InventoryReport"
+        },
+        {
+          "method": "CreateTransaction",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/transaction",
+          "request_dto": "None",
+          "response_dto": "InventoryTransaction"
+        },
+        {
+          "method": "GetTransaction",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/transaction/{id}",
+          "request_dto": "None",
+          "response_dto": "InventoryTransaction"
+        },
+        {
+          "method": "SearchTransactions",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/transaction/search",
+          "request_dto": "None",
+          "response_dto": "PagedResult<InventoryTransaction"
+        },
+        {
+          "method": "GetRecentTransactions",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/transaction/recent",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<InventoryTransaction"
+        },
+        {
+          "method": "GetLowStockAlerts",
+          "http_method": "HttpGet",
+          "route": "/api/Inventory/alerts/low-stock",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<LowStockAlert"
+        },
+        {
+          "method": "SendLowStockAlerts",
+          "http_method": "HttpPost",
+          "route": "/api/Inventory/alerts/low-stock/send",
+          "request_dto": "None",
+          "response_dto": "None"
+        }
+      ]
+    },
+    {
+      "name": "ProcurementController",
+      "base_route": "api/Procurement",
+      "services": [
+        "IProcurementManagementService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetSupplier",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/suppliers/{id}",
+          "request_dto": "None",
+          "response_dto": "Supplier"
+        },
+        {
+          "method": "GetSupplierByCode",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/suppliers/by-code/{code}",
+          "request_dto": "None",
+          "response_dto": "Supplier"
+        },
+        {
+          "method": "GetSuppliers",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/suppliers",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<Supplier"
+        },
+        {
+          "method": "CreateSupplier",
+          "http_method": "HttpPost",
+          "route": "/api/Procurement/suppliers",
+          "request_dto": "CreateSupplierRequest",
+          "response_dto": "Supplier"
+        },
+        {
+          "method": "UpdateSupplier",
+          "http_method": "HttpPut",
+          "route": "/api/Procurement/suppliers/{id}",
+          "request_dto": "UpdateSupplierRequest",
+          "response_dto": "Supplier"
+        },
+        {
+          "method": "DeleteSupplier",
+          "http_method": "HttpDelete",
+          "route": "/api/Procurement/suppliers/{id}",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetPurchaseOrder",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/purchase-orders/{id}",
+          "request_dto": "None",
+          "response_dto": "PurchaseOrder"
+        },
+        {
+          "method": "GetPurchaseOrderByNumber",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/purchase-orders/by-number/{orderNumber}",
+          "request_dto": "None",
+          "response_dto": "PurchaseOrder"
+        },
+        {
+          "method": "GetPurchaseOrders",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/purchase-orders",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<PurchaseOrder"
+        },
+        {
+          "method": "GetPurchaseOrdersBySupplier",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/purchase-orders/by-supplier/{supplierId}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<PurchaseOrder"
+        },
+        {
+          "method": "GetPurchaseOrdersByStatus",
+          "http_method": "HttpGet",
+          "route": "/api/Procurement/purchase-orders/by-status/{status}",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<PurchaseOrder"
+        },
+        {
+          "method": "CreatePurchaseOrder",
+          "http_method": "HttpPost",
+          "route": "/api/Procurement/purchase-orders",
+          "request_dto": "CreatePurchaseOrderRequest",
+          "response_dto": "PurchaseOrder"
+        },
+        {
+          "method": "UpdatePurchaseOrder",
+          "http_method": "HttpPut",
+          "route": "/api/Procurement/purchase-orders/{id}",
+          "request_dto": "UpdatePurchaseOrderRequest",
+          "response_dto": "PurchaseOrder"
+        },
+        {
+          "method": "DeletePurchaseOrder",
+          "http_method": "HttpDelete",
+          "route": "/api/Procurement/purchase-orders/{id}",
+          "request_dto": "None",
+          "response_dto": "None"
+        }
+      ]
+    },
+    {
+      "name": "ProductsController",
+      "base_route": "api/Products",
+      "services": [
+        "IProductCatalogService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetProducts",
+          "http_method": "HttpGet",
+          "route": "/api/Products",
+          "request_dto": "Query:int",
+          "response_dto": "None"
+        },
+        {
+          "method": "SearchProducts",
+          "http_method": "HttpGet",
+          "route": "/api/Products/search",
+          "request_dto": "Query:string",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetProduct",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{id}",
+          "request_dto": "None",
+          "response_dto": "Product"
+        },
+        {
+          "method": "GetProductBySku",
+          "http_method": "HttpGet",
+          "route": "/api/Products/by-sku/{sku}",
+          "request_dto": "None",
+          "response_dto": "Product"
+        },
+        {
+          "method": "CreateProduct",
+          "http_method": "HttpPost",
+          "route": "/api/Products",
+          "request_dto": "CreateProductRequest",
+          "response_dto": "Product"
+        },
+        {
+          "method": "UpdateProduct",
+          "http_method": "HttpPut",
+          "route": "/api/Products/{id}",
+          "request_dto": "UpdateProductRequest",
+          "response_dto": "Product"
+        },
+        {
+          "method": "DeleteProduct",
+          "http_method": "HttpDelete",
+          "route": "/api/Products/{id}",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "GetProductVariations",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{productId}/variations",
+          "request_dto": "Query:int",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetAvailableSizes",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{productId}/sizes",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<string"
+        },
+        {
+          "method": "GetAvailableColors",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{productId}/colors",
+          "request_dto": "None",
+          "response_dto": "IEnumerable<string"
+        },
+        {
+          "method": "GetTotalStock",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{productId}/total-stock",
+          "request_dto": "None",
+          "response_dto": "int"
+        },
+        {
+          "method": "GetLowStockVariations",
+          "http_method": "HttpGet",
+          "route": "/api/Products/low-stock",
+          "request_dto": "Query:int",
+          "response_dto": "IEnumerable<ProductVariation"
+        },
+        {
+          "method": "ValidateProductDeletion",
+          "http_method": "HttpGet",
+          "route": "/api/Products/{id}/validate-deletion",
+          "request_dto": "None",
+          "response_dto": "bool"
+        }
+      ]
+    },
+    {
+      "name": "ProductVariationsController",
+      "base_route": "api/ProductVariations",
+      "services": [
+        "IProductCatalogService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetVariation",
+          "http_method": "HttpGet",
+          "route": "/api/ProductVariations/{id}",
+          "request_dto": "None",
+          "response_dto": "ProductVariation"
+        },
+        {
+          "method": "GetVariationBySku",
+          "http_method": "HttpGet",
+          "route": "/api/ProductVariations/by-sku/{sku}",
+          "request_dto": "None",
+          "response_dto": "ProductVariation"
+        },
+        {
+          "method": "UpdateStock",
+          "http_method": "HttpPatch",
+          "route": "/api/ProductVariations/{id}/stock",
+          "request_dto": "UpdateStockRequest",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "UpdateVariation",
+          "http_method": "HttpPut",
+          "route": "/api/ProductVariations/{id}",
+          "request_dto": "UpdateProductVariationRequest",
+          "response_dto": "ProductVariation"
+        },
+        {
+          "method": "DeleteVariation",
+          "http_method": "HttpDelete",
+          "route": "/api/ProductVariations/{id}",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        }
+      ]
+    },
+    {
+      "name": "ReportingController",
+      "base_route": "api/Reporting",
+      "services": [
+        "IAnalyticsService",
+        "IReportingService"
+      ],
+      "endpoints": [
+        {
+          "method": "GetSalesReport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/sales",
+          "request_dto": "Query:DateTime",
+          "response_dto": "SalesReport"
+        },
+        {
+          "method": "GetInventoryReport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/inventory",
+          "request_dto": "None",
+          "response_dto": "InventoryReport"
+        },
+        {
+          "method": "GetCustomerReport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/customers",
+          "request_dto": "Query:DateTime",
+          "response_dto": "CustomerReport"
+        },
+        {
+          "method": "GetProcurementReport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/procurement",
+          "request_dto": "Query:DateTime",
+          "response_dto": "ProcurementReport"
+        },
+        {
+          "method": "GetFinancialReport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/financial",
+          "request_dto": "Query:DateTime",
+          "response_dto": "FinancialReport"
+        },
+        {
+          "method": "GetSalesAnalytics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/analytics/sales",
+          "request_dto": "Query:DateTime",
+          "response_dto": "SalesAnalytics"
+        },
+        {
+          "method": "GetInventoryAnalytics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/analytics/inventory",
+          "request_dto": "None",
+          "response_dto": "InventoryAnalytics"
+        },
+        {
+          "method": "GetCustomerAnalytics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/analytics/customers",
+          "request_dto": "Query:DateTime",
+          "response_dto": "CustomerAnalytics"
+        },
+        {
+          "method": "GetFinancialAnalytics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/analytics/financial",
+          "request_dto": "Query:DateTime",
+          "response_dto": "FinancialAnalytics"
+        },
+        {
+          "method": "GetPredictiveAnalytics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/analytics/predictive",
+          "request_dto": "Query:DateTime",
+          "response_dto": "PredictiveAnalytics"
+        },
+        {
+          "method": "RunCustomReport",
+          "http_method": "HttpPost",
+          "route": "/api/Reporting/custom/run",
+          "request_dto": "CustomReportRunRequest",
+          "response_dto": "object"
+        },
+        {
+          "method": "ExportCustomReport",
+          "http_method": "HttpPost",
+          "route": "/api/Reporting/custom/export",
+          "request_dto": "CustomReportExportRequest",
+          "response_dto": "ExportResult"
+        },
+        {
+          "method": "GetDashboardSummary",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/dashboard/summary",
+          "request_dto": "None",
+          "response_dto": "DashboardSummary"
+        },
+        {
+          "method": "GetRealTimeMetrics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/dashboard/realtime",
+          "request_dto": "None",
+          "response_dto": "RealTimeMetrics"
+        },
+        {
+          "method": "ExportReport",
+          "http_method": "HttpPost",
+          "route": "/api/Reporting/export",
+          "request_dto": "ExportRequest",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetExportStatus",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/export/{fileId}/status",
+          "request_dto": "None",
+          "response_dto": "ExportResult"
+        },
+        {
+          "method": "DownloadExport",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/export/{fileId}/download",
+          "request_dto": "None",
+          "response_dto": "IActionResult"
+        },
+        {
+          "method": "GetMetrics",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/metrics",
+          "request_dto": "None",
+          "response_dto": "None"
+        },
+        {
+          "method": "GetAlerts",
+          "http_method": "HttpGet",
+          "route": "/api/Reporting/alerts",
+          "request_dto": "None",
+          "response_dto": "None"
+        }
+      ]
+    },
+    {
+      "name": "SalesController",
+      "base_route": "api/Sales",
+      "services": [
+        "ISalesProcessingService"
+      ],
+      "endpoints": [
+        {
+          "method": "ProcessSale",
+          "http_method": "HttpPost",
+          "route": "/api/Sales/process-sale",
+          "request_dto": "ProcessSaleRequest",
+          "response_dto": "SalesTransaction"
+        },
+        {
+          "method": "ProcessReturn",
+          "http_method": "HttpPost",
+          "route": "/api/Sales/process-return",
+          "request_dto": "ProcessReturnRequest",
+          "response_dto": "SalesTransaction"
+        },
+        {
+          "method": "ProcessExchange",
+          "http_method": "HttpPost",
+          "route": "/api/Sales/process-exchange",
+          "request_dto": "ProcessExchangeRequest",
+          "response_dto": "SalesTransaction"
+        },
+        {
+          "method": "GetTransaction",
+          "http_method": "HttpGet",
+          "route": "/api/Sales/{id:guid}",
+          "request_dto": "None",
+          "response_dto": "SalesTransaction"
+        },
+        {
+          "method": "GetTransactionByNumber",
+          "http_method": "HttpGet",
+          "route": "/api/Sales/by-number/{transactionNumber}",
+          "request_dto": "None",
+          "response_dto": "SalesTransaction"
+        },
+        {
+          "method": "GetTransactions",
+          "http_method": "HttpGet",
+          "route": "/api/Sales",
+          "request_dto": "Query:int",
+          "response_dto": "PagedResponse<SalesTransaction"
+        },
+        {
+          "method": "GetSalesStatistics",
+          "http_method": "HttpGet",
+          "route": "/api/Sales/statistics",
+          "request_dto": "Query:DateTime",
+          "response_dto": "SalesStatistics"
+        },
+        {
+          "method": "GetTopSellingProducts",
+          "http_method": "HttpGet",
+          "route": "/api/Sales/top-products",
+          "request_dto": "Query:DateTime",
+          "response_dto": "IEnumerable<ProductSalesSummary"
+        },
+        {
+          "method": "CancelTransaction",
+          "http_method": "HttpPut",
+          "route": "/api/Sales/{id:guid}/cancel",
+          "request_dto": "CancelTransactionRequest",
+          "response_dto": "None"
+        }
+      ]
+    }
+  ],
+  "dtos": {
+    "ApiResponse": {
+      "Data": "T?"
+    },
+    "PaginatedApiResponse": {
+      "Data": "IEnumerable<T>?"
+    },
+    "ErrorResponse": {
+      "Success": "bool"
+    },
+    "ErrorDetail": {
+      "Code": "string"
+    },
+    "ErrorApiResponse": {
+      "Error": "ErrorDetail?"
+    },
+    "ValidationErrorResponse": {
+      "ValidationErrors": "List<ValidationError>"
+    },
+    "ProblemDetails": {
+      "Type": "string"
+    },
+    "CustomProblemDetails": {
+      "RequestId": "string?"
+    }
+  },
+  "interfaces": {
+    "IAnalyticsService": [
+      "GetSalesAnalyticsAsync",
+      "GetInventoryAnalyticsAsync",
+      "GetCustomerAnalyticsAsync",
+      "GetFinancialAnalyticsAsync",
+      "GetPredictiveAnalyticsAsync"
+    ],
+    "IAuthService": [
+      "AuthenticateAsync",
+      "RefreshTokenAsync",
+      "RevokeTokenAsync",
+      "IsTokenBlacklistedAsync",
+      "BlacklistTokenAsync",
+      "ValidateTokenAsync",
+      "GetCurrentUserAsync"
+    ],
+    "IBranchRepository": [
+      "GetByIdAsync",
+      "GetByCodeAsync",
+      "GetActiveBranchesAsync",
+      "CodeExistsAsync"
+    ],
+    "ICategoryRepository": [
+      "GetByIdAsync",
+      "GetByCodeAsync",
+      "GetAllAsync",
+      "GetActiveAsync",
+      "GetRootCategoriesAsync",
+      "GetChildCategoriesAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "CodeExistsAsync",
+      "HasChildCategoriesAsync",
+      "HasProductsAsync",
+      "GetCountAsync",
+      "GetActiveCountAsync",
+      "GetHierarchyAsync",
+      "SearchAsync"
+    ],
+    "ICustomerLoyaltyRepository": [
+      "GetByCustomerIdAsync",
+      "GetByIdAsync",
+      "AddAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "GetPagedAsync",
+      "GetByPointsRangeAsync"
+    ],
+    "ICustomerManagementService": [
+      "GetCustomerByIdAsync",
+      "GetCustomerByEmailAsync",
+      "GetCustomersAsync",
+      "CreateCustomerAsync",
+      "UpdateCustomerAsync",
+      "DeleteCustomerAsync",
+      "GetCustomerLoyaltyAsync",
+      "AddLoyaltyPointsAsync",
+      "RedeemLoyaltyPointsAsync"
+    ],
+    "ICustomerRepository": [
+      "GetByIdAsync",
+      "GetByEmailAsync",
+      "GetByPhoneAsync",
+      "GetPagedAsync",
+      "GetAllAsync",
+      "GetActiveAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "EmailExistsAsync",
+      "PhoneExistsAsync",
+      "GetCountAsync",
+      "GetActiveCountAsync",
+      "SearchAsync",
+      "GetCustomersWithUpcomingBirthdaysAsync"
+    ],
+    "IFileUploadService": [
+      "UploadFileAsync",
+      "UploadFilesAsync",
+      "DeleteFileAsync",
+      "ValidateFile",
+      "GetFileInfoAsync",
+      "FileExistsAsync"
+    ],
+    "IInventoryManagementService": [
+      "CreateInventoryAsync",
+      "GetInventoryAsync",
+      "UpdateInventoryAsync",
+      "DeleteInventoryAsync",
+      "GetInventoryByLocationAsync",
+      "GetInventoryByProductAsync",
+      "GetInventoryByProductVariationAsync",
+      "GetInventoryByBranchAsync",
+      "GetInventoryByWarehouseAsync",
+      "ReserveInventoryAsync",
+      "ReleaseInventoryAsync",
+      "UpdateStockAsync",
+      "TransferInventoryAsync",
+      "BulkTransferInventoryAsync",
+      "AdjustInventoryAsync",
+      "BulkAdjustInventoryAsync",
+      "SearchInventoryAsync",
+      "GetLowStockItemsAsync",
+      "GetOutOfStockItemsAsync",
+      "GetInventoryStatisticsAsync",
+      "GetInventoryValueByLocationAsync",
+      "GenerateInventoryReportAsync",
+      "CreateTransactionAsync",
+      "SearchTransactionsAsync",
+      "GetRecentTransactionsAsync",
+      "ValidateInventoryRequest",
+      "ValidateTransferRequest",
+      "ValidateAdjustmentRequest",
+      "GetLowStockAlertsAsync",
+      "SendLowStockAlertsAsync",
+      "GetInventorySummaryAsync",
+      "GetRecentMovementsAsync"
+    ],
+    "IInventoryRepository": [
+      "GetByIdAsync",
+      "GetByProductAndLocationAsync",
+      "GetByBranchAsync",
+      "GetByWarehouseAsync",
+      "GetByProductAsync",
+      "GetByProductVariationAsync",
+      "GetLowStockItemsAsync",
+      "GetOutOfStockItemsAsync",
+      "GetWithPaginationAsync",
+      "SearchAsync",
+      "UpdateQuantityAsync",
+      "ReserveQuantityAsync",
+      "ReleaseReservedQuantityAsync",
+      "GetStatisticsAsync",
+      "GetInventoryValueByLocationAsync",
+      "ExistsAsync",
+      "GetMovementsAsync"
+    ],
+    "IInventoryTransactionRepository": [
+      "GetByIdAsync",
+      "GetByInventoryIdAsync",
+      "GetByProductIdAsync",
+      "GetByProductVariationIdAsync",
+      "GetByBranchIdAsync",
+      "GetByWarehouseIdAsync",
+      "GetByTransactionTypeAsync",
+      "GetByDateRangeAsync",
+      "GetByUserIdAsync",
+      "GetWithPaginationAsync",
+      "GetTransactionSummaryAsync",
+      "GetRecentTransactionsAsync",
+      "GetMovementsAsync",
+      "GetByReferenceNumberAsync",
+      "GetTransferTransactionsAsync",
+      "GetAdjustmentTransactionsAsync",
+      "GetStatisticsAsync"
+    ],
+    "IPaymentService": [
+      "ProcessCreditCardPaymentAsync",
+      "ProcessDebitCardPaymentAsync",
+      "ProcessCashPaymentAsync",
+      "ProcessGiftCardPaymentAsync"
+    ],
+    "IProcurementManagementService": [
+      "GetSupplierByIdAsync",
+      "GetSupplierByCodeAsync",
+      "GetSuppliersAsync",
+      "CreateSupplierAsync",
+      "UpdateSupplierAsync",
+      "DeleteSupplierAsync",
+      "GetPurchaseOrderByIdAsync",
+      "GetPurchaseOrderByNumberAsync",
+      "GetPurchaseOrdersAsync",
+      "CreatePurchaseOrderAsync",
+      "UpdatePurchaseOrderAsync",
+      "DeletePurchaseOrderAsync",
+      "GetPurchaseOrdersBySupplierAsync",
+      "GetPurchaseOrdersByStatusAsync"
+    ],
+    "IProductCatalogService": [
+      "CreateCategoryAsync",
+      "UpdateCategoryAsync",
+      "DeleteCategoryAsync",
+      "GetCategoryAsync",
+      "GetCategoriesAsync",
+      "GetRootCategoriesAsync",
+      "GetChildCategoriesAsync",
+      "CreateProductAsync",
+      "UpdateProductAsync",
+      "DeleteProductAsync",
+      "GetProductAsync",
+      "GetProductBySkuAsync",
+      "GetProductsAsync",
+      "SearchProductsAsync",
+      "CreateProductVariationAsync",
+      "UpdateProductVariationAsync",
+      "DeleteProductVariationAsync",
+      "GetProductVariationAsync",
+      "GetProductVariationBySkuAsync",
+      "GetProductVariationsAsync",
+      "GetAvailableSizesAsync",
+      "GetAvailableColorsAsync",
+      "AddProductImageAsync",
+      "UpdateProductImageAsync",
+      "DeleteProductImageAsync",
+      "GetProductImageAsync",
+      "GetProductImagesAsync",
+      "GetPrimaryImageAsync",
+      "UpdateVariationStockAsync",
+      "GetTotalStockForProductAsync",
+      "GetLowStockVariationsAsync",
+      "ValidateCategoryDeletionAsync",
+      "ValidateProductDeletionAsync",
+      "ValidateProductVariationAsync",
+      "GetBranchAsync",
+      "GetWarehouseAsync"
+    ],
+    "IProductRepository": [
+      "GetByIdAsync",
+      "GetBySkuAsync",
+      "GetPagedAsync",
+      "GetAllAsync",
+      "GetActiveAsync",
+      "GetByCategoryAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "SkuExistsAsync",
+      "HasVariationsAsync",
+      "GetCountAsync",
+      "GetActiveCountAsync",
+      "SearchAsync",
+      "GetByBrandAsync",
+      "GetBySeasonAsync",
+      "GetLowStockProductsAsync",
+      "UpdateStatusAsync"
+    ],
+    "IProductVariationRepository": [
+      "GetByIdAsync",
+      "GetBySkuAsync",
+      "GetByProductIdAsync",
+      "GetByProductIdPagedAsync",
+      "GetAllAsync",
+      "GetActiveAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "SkuExistsAsync",
+      "SizeColorCombinationExistsAsync",
+      "GetCountAsync",
+      "GetActiveCountAsync",
+      "GetBySizeAsync",
+      "GetByColorAsync",
+      "GetLowStockVariationsAsync",
+      "GetOutOfStockVariationsAsync",
+      "UpdateStockAsync",
+      "GetAvailableSizesAsync",
+      "GetAvailableColorsAsync",
+      "GetTotalStockForProductAsync",
+      "UpdateStatusAsync"
+    ],
+    "IPurchaseOrderRepository": [
+      "GetByIdAsync",
+      "GetByOrderNumberAsync",
+      "GetAllAsync",
+      "GetBySupplierAsync",
+      "GetByStatusAsync",
+      "GetPagedAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "OrderNumberExistsAsync",
+      "GetCountAsync",
+      "GetCountByStatusAsync",
+      "GetTotalValueAsync"
+    ],
+    "IReportingService": [
+      "GenerateSalesReportAsync",
+      "GenerateInventoryReportAsync",
+      "GenerateCustomerReportAsync",
+      "GenerateProcurementReportAsync",
+      "GenerateFinancialReportAsync"
+    ],
+    "IRepository": [
+      "GetByIdAsync",
+      "GetAllAsync",
+      "GetPagedAsync",
+      "AddAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync"
+    ],
+    "ISalesProcessingService": [
+      "ProcessSaleAsync",
+      "ProcessReturnAsync",
+      "ProcessExchangeAsync",
+      "GetTransactionByIdAsync",
+      "GetTransactionByNumberAsync",
+      "GetTransactionsAsync",
+      "GetSalesStatisticsAsync",
+      "GetSalesTransactionsAsync",
+      "GetTopSellingProductsAsync",
+      "CancelTransactionAsync"
+    ],
+    "ISalesTransactionRepository": [
+      "GetByIdAsync",
+      "GetByTransactionNumberAsync",
+      "GetPagedAsync",
+      "GetAllAsync",
+      "GetByCustomerAsync",
+      "GetByBranchAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "TransactionNumberExistsAsync",
+      "GetCountAsync",
+      "GetSalesStatisticsAsync",
+      "GetTopSellingProductsAsync",
+      "GetDailySalesSummaryAsync"
+    ],
+    "ISupplierRepository": [
+      "GetByIdAsync",
+      "GetByCodeAsync",
+      "GetAllAsync",
+      "GetActiveAsync",
+      "GetPagedAsync",
+      "CreateAsync",
+      "UpdateAsync",
+      "DeleteAsync",
+      "ExistsAsync",
+      "CodeExistsAsync",
+      "EmailExistsAsync",
+      "GetCountAsync",
+      "GetActiveCountAsync"
+    ],
+    "IUnitOfWork": [],
+    "IWarehouseRepository": [
+      "GetByIdAsync",
+      "GetByCodeAsync",
+      "GetActiveWarehousesAsync",
+      "CodeExistsAsync"
+    ],
+    "IDataArchivalService": [
+      "ArchiveOldDataAsync",
+      "PurgeExpiredDataAsync",
+      "GetArchivalStatusAsync"
+    ],
+    "IAuditService": [
+      "LogAsync",
+      "LogAsync",
+      "LogUserActionAsync",
+      "LogSystemEventAsync",
+      "GetUserAuditEventsAsync",
+      "GetResourceAuditEventsAsync",
+      "GetAuditEventsByActionAsync",
+      "GetAuditEventsAsync",
+      "GetAuditStatisticsAsync",
+      "ArchiveAuditEventsAsync",
+      "DeleteAuditEventsAsync"
+    ],
+    "IBackgroundJobService": [
+      "PauseJobAsync",
+      "ResumeJobAsync",
+      "DeleteJobAsync",
+      "GetScheduledJobsAsync",
+      "GetJobHistoryAsync",
+      "GetJobStatisticsAsync",
+      "IsJobRunningAsync",
+      "GetNextRunTimeAsync"
+    ],
+    "IBackgroundJob": [
+      "ExecuteAsync"
+    ],
+    "IErrorHandlingService": [],
+    "INotificationService": [
+      "SendLowStockAlertAsync"
+    ],
+    "IRbacService": [
+      "HasPermissionAsync",
+      "HasAnyPermissionAsync",
+      "HasAllPermissionsAsync",
+      "HasRoleAsync",
+      "HasAnyRoleAsync",
+      "GetUserPermissionsAsync",
+      "GetUserRolesAsync",
+      "AssignRoleAsync",
+      "RemoveRoleAsync",
+      "GrantPermissionToRoleAsync",
+      "RevokePermissionFromRoleAsync",
+      "GetRolePermissionsAsync",
+      "GetUsersWithRoleAsync",
+      "GetRolesWithPermissionAsync",
+      "CanAccessResourceAsync",
+      "GetEffectivePermissionsAsync"
+    ]
+  },
+  "implementations": {
+    "ValidationException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "BusinessException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "ResourceNotFoundException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "UnauthorizedException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "ForbiddenException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "ConflictException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "ExternalServiceException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "RateLimitExceededException": {
+      "interfaces": [
+        "BaseException"
+      ],
+      "methods": []
+    },
+    "ErrorApiResponse": {
+      "interfaces": [
+        "ApiResponse"
+      ],
+      "methods": []
+    },
+    "ValidationErrorResponse": {
+      "interfaces": [
+        "ApiResponse"
+      ],
+      "methods": []
+    },
+    "CustomProblemDetails": {
+      "interfaces": [
+        "ProblemDetails"
+      ],
+      "methods": []
+    },
+    "AuditCleanupJob": {
+      "interfaces": [
+        "IBackgroundJob"
+      ],
+      "methods": [
+        "ExecuteAsync"
+      ]
+    },
+    "AnalyticsService": {
+      "interfaces": [
+        "IAnalyticsService"
+      ],
+      "methods": [
+        "GetSalesAnalyticsAsync",
+        "GetInventoryAnalyticsAsync",
+        "GetCustomerAnalyticsAsync",
+        "GetFinancialAnalyticsAsync",
+        "GetPredictiveAnalyticsAsync"
+      ]
+    },
+    "CustomerManagementService": {
+      "interfaces": [
+        "ICustomerManagementService"
+      ],
+      "methods": [
+        "GetCustomerByIdAsync",
+        "GetCustomerByEmailAsync",
+        "GetCustomersAsync",
+        "CreateCustomerAsync",
+        "UpdateCustomerAsync",
+        "DeleteCustomerAsync",
+        "GetCustomerLoyaltyAsync",
+        "AddLoyaltyPointsAsync",
+        "RedeemLoyaltyPointsAsync"
+      ]
+    },
+    "DataArchivalService": {
+      "interfaces": [
+        "IDataArchivalService"
+      ],
+      "methods": [
+        "ArchiveOldDataAsync",
+        "PurgeExpiredDataAsync",
+        "GetArchivalStatusAsync"
+      ]
+    },
+    "NotificationService": {
+      "interfaces": [
+        "INotificationService"
+      ],
+      "methods": [
+        "SendLowStockAlertAsync"
+      ]
+    },
+    "ProcurementManagementService": {
+      "interfaces": [
+        "IProcurementManagementService"
+      ],
+      "methods": [
+        "GetSupplierByIdAsync",
+        "GetSupplierByCodeAsync",
+        "GetSuppliersAsync",
+        "CreateSupplierAsync",
+        "UpdateSupplierAsync",
+        "DeleteSupplierAsync",
+        "GetPurchaseOrderByIdAsync",
+        "GetPurchaseOrderByNumberAsync",
+        "GetPurchaseOrdersAsync",
+        "CreatePurchaseOrderAsync",
+        "UpdatePurchaseOrderAsync",
+        "DeletePurchaseOrderAsync",
+        "GetPurchaseOrdersBySupplierAsync",
+        "GetPurchaseOrdersByStatusAsync"
+      ]
+    },
+    "ReportingService": {
+      "interfaces": [
+        "IReportingService"
+      ],
+      "methods": [
+        "GenerateSalesReportAsync",
+        "GenerateInventoryReportAsync",
+        "GenerateCustomerReportAsync",
+        "GenerateProcurementReportAsync",
+        "GenerateFinancialReportAsync"
+      ]
+    },
+    "SanitizedAttribute": {
+      "interfaces": [
+        "ValidationAttribute"
+      ],
+      "methods": []
+    }
+  }
+}

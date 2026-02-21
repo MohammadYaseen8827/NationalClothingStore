@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {}
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
         "projectName": "NationalClothingStore.Domain",
-        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\obj\\",
+        "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"

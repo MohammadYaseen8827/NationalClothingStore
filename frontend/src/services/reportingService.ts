@@ -339,6 +339,30 @@ export const reportingService = {
     } catch (error: unknown) {
       handleAxiosError(error, 'Failed to export custom report')
     }
+  },
+
+  /**
+   * Get system alerts
+   */
+  async getAlerts(params?: {
+    type?: string
+    isRead?: boolean
+    startDate?: string | Date
+    endDate?: string | Date
+  }): Promise<any[]> {
+    try {
+      const response = await apiClient.get('/reporting/alerts', {
+        params: {
+          type: params?.type,
+          isRead: params?.isRead,
+          startDate: params?.startDate ? toIsoDate(params.startDate) : undefined,
+          endDate: params?.endDate ? toIsoDate(params.endDate) : undefined
+        }
+      })
+      return response.data
+    } catch (error: unknown) {
+      handleAxiosError(error, 'Failed to retrieve alerts')
+    }
   }
 }
 

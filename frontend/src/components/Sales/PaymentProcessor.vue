@@ -502,3 +502,4 @@ export interface PaymentData {
   giftCardNumber?: string
   transactionId: string
 }
+</script>

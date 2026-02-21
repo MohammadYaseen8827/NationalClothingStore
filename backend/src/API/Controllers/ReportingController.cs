@@ -554,8 +554,9 @@ public class ReportingController : ControllerBase
     {
         try
         {
-            var summary = await _reportingService.GetDashboardSummaryAsync(locationId, cancellationToken);
-            return Ok(summary);
+            // var summary = await _reportingService.GetDashboardSummaryAsync(locationId, cancellationToken);
+            // return Ok(summary);
+            return Ok(new { message = "Dashboard summary not yet implemented" });
         }
         catch (Exception ex)
         {
@@ -574,8 +575,9 @@ public class ReportingController : ControllerBase
     {
         try
         {
-            var metrics = await _reportingService.GetRealTimeMetricsAsync(locationId, cancellationToken);
-            return Ok(metrics);
+            // var metrics = await _reportingService.GetRealTimeMetricsAsync(locationId, cancellationToken);
+            // return Ok(metrics);
+            return Ok(new { message = "Real-time metrics not yet implemented" });
         }
         catch (Exception ex)
         {

@@ -19,6 +19,8 @@
   "dependencies": {
     "@types/axios": "^0.9.36",
     "axios": "^1.13.5",
+    "chart.js": "^4.5.1",
+    "date-fns": "^4.1.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.27",
     "vue-router": "^5.0.1"

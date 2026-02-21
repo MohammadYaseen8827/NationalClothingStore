@@ -2333,11 +2333,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+      "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
       "projectName": "NationalClothingStore.Infrastructure",
-      "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+      "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\obj\\",
+      "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2354,11 +2354,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
-              "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj"
+            "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
+              "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj"
             },
-            "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
-              "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
+            "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+              "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
             }
           }
         }

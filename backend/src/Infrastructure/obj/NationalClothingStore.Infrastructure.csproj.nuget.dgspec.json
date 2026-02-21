@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {}
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
+        "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
         "projectName": "NationalClothingStore.Application",
-        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
+        "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\obj\\",
+        "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -28,11 +28,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
-                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
+              "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+                "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
               },
-              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
-                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj"
+              "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
+                "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj"
               }
             }
           }
@@ -82,14 +82,14 @@
         }
       }
     },
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
         "projectName": "NationalClothingStore.Domain",
-        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
+        "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\obj\\",
+        "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -143,14 +143,14 @@
         }
       }
     },
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
         "projectName": "NationalClothingStore.Infrastructure",
-        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
+        "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\NationalClothingStore.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Infrastructure\\obj\\",
+        "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -167,11 +167,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
-                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Application\\NationalClothingStore.Application.csproj"
+              "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj": {
+                "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Application\\NationalClothingStore.Application.csproj"
               },
-              "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
-                "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
+              "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj": {
+                "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Domain\\NationalClothingStore.Domain.csproj"
               }
             }
           }
@@ -257,14 +257,14 @@
         }
       }
     },
-    "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
+    "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
+        "projectUniqueName": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
         "projectName": "NationalClothingStore.Shared",
-        "projectPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
+        "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\NationalClothingStore.Shared.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "D:\\Wissam\\NationalClothingStore\\backend\\src\\Shared\\obj\\",
+        "outputPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\src\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
