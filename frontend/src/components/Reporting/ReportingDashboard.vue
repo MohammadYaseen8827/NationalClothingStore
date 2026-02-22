@@ -284,7 +284,7 @@ export default {
 
     // Methods
     const updateDateRange = () => {
-      const endDate = new Date()
+      let endDate = new Date()
       let startDate = new Date()
       
       switch (selectedPeriod.value) {
