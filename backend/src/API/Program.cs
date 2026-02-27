@@ -1,5 +1,6 @@
 using NationalClothingStore.Infrastructure.Data;
 using NationalClothingStore.Infrastructure.Extensions;
+using NationalClothingStore.API;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,10 +8,8 @@ builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddRepositories();
 builder.Services.AddApplicationServices();
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-// Add Swagger UI for API documentation
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnet/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new()
@@ -36,16 +35,28 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// Initialize the database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        await DatabaseInitializer.InitializeDatabaseAsync(services);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while initializing the database.");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    
-    // Enable Swagger UI
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/openapi/v1.json", "National Clothing Store API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "National Clothing Store API v1");
         c.DocumentTitle = "National Clothing Store API";
         c.DefaultModelsExpandDepth(-1); // Collapse models by default
         c.DisplayRequestDuration();

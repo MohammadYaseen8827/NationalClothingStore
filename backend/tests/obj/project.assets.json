@@ -7154,6 +7154,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "D:\\Work\\Master projects\\National Clothing Store\\backend\\API\\NationalClothingStore.API.csproj",
       "Microsoft.AspNetCore.Mvc.Testing >= 9.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "Moq >= 4.20.0",
@@ -7187,7 +7188,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Work\\Master projects\\National Clothing Store\\backend\\API\\NationalClothingStore.API.csproj": {
+              "projectPath": "D:\\Work\\Master projects\\National Clothing Store\\backend\\API\\NationalClothingStore.API.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -7248,6 +7253,15 @@
     }
   },
   "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\Work\\Master projects\\National Clothing Store\\backend\\API\\NationalClothingStore.API.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\Work\\Master projects\\National Clothing Store\\backend\\API\\NationalClothingStore.API.csproj",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
     {
       "code": "NU1901",
       "level": "Warning",

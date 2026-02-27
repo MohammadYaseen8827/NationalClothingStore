@@ -125,5 +125,21 @@ public class NationalClothingStoreDbContext : DbContext
             
         modelBuilder.Entity<SalesTransaction>()
             .HasIndex(st => st.CreatedAt);
+            
+        // Configure AuditEvent entity to handle the Metadata property
+        modelBuilder.Entity<AuditEvent>()
+            .Ignore(ae => ae.Metadata);
+            
+        // Configure composite key for RolePermission
+        modelBuilder.Entity<RolePermission>()
+            .HasKey(rp => new { rp.RoleId, rp.PermissionId });
+            
+        // Configure composite key for UserRole
+        modelBuilder.Entity<UserRole>()
+            .HasKey(ur => new { ur.UserId, ur.RoleId });
+            
+        // Configure composite key for UserBranch
+        modelBuilder.Entity<UserBranch>()
+            .HasKey(ub => new { ub.UserId, ub.BranchId });
     }
 }

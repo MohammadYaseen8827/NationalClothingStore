@@ -97,3 +97,11 @@ node_modules/
 frontend/dist/
 frontend/.nuxt/
 frontend/.output/
+
+# Database
+create_database.sql
+data_seeder
+data_seeder/output
+.qoder
+.resources
+.agents
